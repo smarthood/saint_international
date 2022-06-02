@@ -70,15 +70,6 @@ class _loginState extends State<verify> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 70),
-            child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Forget Password ?",
-                  style: TextStyle(color: Colors.blue),
-                )),
-          ),
           Container(
               height: 50,
               margin: const EdgeInsets.only(top: 50.0),
@@ -104,10 +95,13 @@ class _loginState extends State<verify> {
                         "../assets/logo.png",
                         height: 80,
                       ),
-                      content: Text('Verification complete successfully'),
+                      content: Text(
+                          'Verification email has been sent to your verified email'),
                       actions: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           child: Center(child: Text('OK')),
                         ),
                       ],
