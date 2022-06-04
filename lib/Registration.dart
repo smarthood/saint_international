@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:login/main.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const Register());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Register extends StatelessWidget {
+  const Register({Key? key}) : super(key: key);
 
   static const String _title = 'Sample App';
 
@@ -18,9 +19,13 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           leading: Padding(
             padding: const EdgeInsets.all(1.0),
-            child: Icon(
-              Icons.chevron_left,
-              size: 50,
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => Verification())));
+              },
+              icon: Icon(Icons.chevron_left),
+              iconSize: 50,
               color: Color.fromARGB(221, 4, 61, 108),
             ),
           ),

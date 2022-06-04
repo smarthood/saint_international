@@ -1,6 +1,5 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
+import './Forget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,19 +16,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: verify(),
+      home: login(),
     );
   }
 }
 
-class verify extends StatefulWidget {
+class login extends StatefulWidget {
   @override
-  State<verify> createState() => _verifyState();
+  State<login> createState() => _loginState();
 }
 
-class _verifyState extends State<verify> {
-  TextEditingController parenticnoController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+class _loginState extends State<login> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +42,9 @@ class _verifyState extends State<verify> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 80, left: 20, right: 20),
+            margin: const EdgeInsets.only(top: 60, left: 20, right: 20),
             child: TextField(
-              controller: parenticnoController,
+              controller: emailController,
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
@@ -55,9 +54,9 @@ class _verifyState extends State<verify> {
                     width: 3,
                   ),
                 ),
-                labelText: 'Parent IC NO',
+                labelText: 'Email',
                 prefixIcon: Icon(
-                  Icons.person_pin_rounded,
+                  Icons.email,
                   color: Color.fromARGB(221, 4, 61, 108),
                 ),
               ),
@@ -73,9 +72,9 @@ class _verifyState extends State<verify> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 80, left: 20, right: 20),
+            margin: const EdgeInsets.only(top: 60, left: 20, right: 20),
             child: TextField(
-              controller: nameController,
+              controller: passwordController,
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
@@ -85,9 +84,9 @@ class _verifyState extends State<verify> {
                     width: 3,
                   ),
                 ),
-                labelText: 'Name',
+                labelText: 'Password',
                 prefixIcon: Icon(
-                  Icons.quick_contacts_dialer,
+                  Icons.visibility,
                   color: Color.fromARGB(221, 4, 61, 108),
                 ),
               ),
@@ -103,17 +102,22 @@ class _verifyState extends State<verify> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 70),
+            padding: const EdgeInsets.only(top: 50),
             child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => forget()),
+                  );
+                },
                 child: Text(
-                  "Already verified ? Login here",
+                  "Forget Password ?",
                   style: TextStyle(color: Colors.blue),
                 )),
           ),
           Container(
               height: 50,
-              margin: const EdgeInsets.only(top: 50.0),
+              margin: const EdgeInsets.only(top: 10.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xff043E6C),
@@ -126,7 +130,7 @@ class _verifyState extends State<verify> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 70, right: 70),
-                  child: const Text('verify'),
+                  child: const Text('Login'),
                 ),
                 onPressed: () {
                   showDialog(
@@ -139,12 +143,7 @@ class _verifyState extends State<verify> {
                       content: Text('Verification complete successfully'),
                       actions: [
                         ElevatedButton(
-                          onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: ((context) => Register())));
-                          },
+                          onPressed: () {},
                           child: Center(child: Text('OK')),
                         ),
                       ],
